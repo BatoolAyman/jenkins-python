@@ -16,9 +16,9 @@ pipeline {
 
         stage('Setup Python') {
             steps {
-                bat 'python --version'
-                bat 'pip install --upgrade pip'
-                bat 'pip install -r requirements.txt'
+                bat 'py --version'
+                bat 'py -m pip install --upgrade pip'
+                bat 'py -m pip install -r requirements.txt'
                 echo "Python setup completed"
             }
         }
@@ -26,7 +26,7 @@ pipeline {
         stage('Run Tests') {
             when { expression { params.RUN_TESTS } }
             steps {
-                bat 'pytest tests/'
+                bat 'py -m pytest tests/'
             }
         }
 
